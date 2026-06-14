@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a73e8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>تسجيل المصروفات</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div id="header">
+    <div class="header-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    </div>
+    <div>
+      <h1>تسجيل المصروفات</h1>
+      <p id="date-display"></p>
+    </div>
+  </div>
+
+  <form id="expense-form" novalidate>
+    <div class="form-group">
+      <label for="employee">الموظف</label>
+      <select id="employee" name="employee" required>
+        <option value="">اختر الموظف</option>
+        <option value="عهده - عبدالرحمن">عهده - عبدالرحمن</option>
+        <option value="عهده - احمد عبد الناصر">عهده - احمد عبد الناصر</option>
+        <option value="عهده - إسلام">عهده - إسلام</option>
+        <option value="عهده - قاسم">عهده - قاسم</option>
+        <option value="عهده - صابر">عهده - صابر</option>
+      </select>
+      <div class="error-message" id="employee-error">يرجى اختيار الموظف</div>
+    </div>
+
+    <div class="form-group">
+      <label for="expense-type">نوع المصروف</label>
+      <select id="expense-type" name="expense-type" required>
+        <option value="">اختر النوع</option>
+        <option value="إيجار">إيجار</option>
+        <option value="رواتب">رواتب</option>
+        <option value="م. بوفية">م. بوفية</option>
+        <option value="نقل ومشال">نقل ومشال</option>
+        <option value="انتقالات">انتقالات</option>
+        <option value="المشتريات">المشتريات</option>
+        <option value="متنوع">متنوع</option>
+      </select>
+      <div class="error-message" id="expense-type-error">يرجى اختيار نوع المصروف</div>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">المبلغ</label>
+      <div class="input-with-currency">
+        <input type="number" id="amount" name="amount" min="0.01" step="0.01" placeholder="0.00" required>
+        <span class="currency-label">ج.م</span>
+      </div>
+      <div class="error-message" id="amount-error">يرجى إدخال مبلغ صحيح</div>
+    </div>
+
+    <div class="form-group">
+      <label for="receipt">صورة الإيصال</label>
+      <div class="file-upload-area" id="file-upload-area">
+        <div class="file-upload-content">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <p>اضغط لرفع صورة الإيصال</p>
+          <span class="file-hint">JPG, PNG (أقصى 10MB)</span>
+        </div>
+        <input type="file" id="receipt" name="receipt" accept="image/jpeg,image/png,image/jpg" capture="environment">
+      </div>
+      <div id="file-preview"></div>
+    </div>
+
+    <button type="submit" id="submit-btn">
+      <span id="submit-text">تسجيل المصروف</span>
+      <div id="spinner" class="hidden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>
+      </div>
+    </button>
+  </form>
+
+  <div id="success-toast" class="toast hidden">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>تم تسجيل المصروف بنجاح!</span>
+  </div>
+
+  <div id="error-toast" class="toast error hidden">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+    <span id="error-message-text">حدث خطأ، حاول مرة أخرى</span>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Google Sans", sans-serif;
+  background: #f0f4f9;
+  color: #1f1f1f;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  direction: rtl;
+}
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 32px 0;
+  min-height: 100vh;
+  background: #f0f4f9;
+}
+
+#header {
+  background: linear-gradient(135deg, #1a73e8, #1557b0);
+  color: white;
+  padding: 24px 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#header h1 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+#header p {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.header-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
+}
+
+.form-group:focus-within {
+  box-shadow: 0 0 0 2px #1a73e8, 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5f6368;
+  margin-bottom: 8px;
+}
+
+.form-group select,
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #1f1f1f;
+  outline: none;
+  font-family: inherit;
+  direction: rtl;
+}
+
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 0 center;
+  background-size: 20px;
+  padding-left: 24px;
+}
+
+.form-group select option {
+  padding: 8px;
+  font-size: 15px;
+}
+
+.form-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-group input[type="number"]::-webkit-outer-spin-button,
+.form-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-with-currency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-with-currency input {
+  flex: 1;
+}
+
+.currency-label {
+  font-size: 15px;
+  color: #5f6368;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.error-message {
+  display: none;
+  font-size: 12px;
+  color: #d93025;
+  margin-top: 6px;
+}
+
+.form-group.error .error-message {
+  display: block;
+}
+
+.form-group.error input,
+.form-group.error select {
+  color: #d93025;
+}
+
+.file-upload-area {
+  position: relative;
+  border: 2px dashed #dadce0;
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8faff;
+}
+
+.file-upload-area:hover,
+.file-upload-area:active {
+  border-color: #1a73e8;
+  background: #e8f0fe;
+}
+
+.file-upload-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-content p {
+  font-size: 14px;
+  color: #1a73e8;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.file-hint {
+  display: block;
+  font-size: 11px;
+  color: #9aa0a6;
+  margin-top: 4px;
+}
+
+#file-preview {
+  margin-top: 8px;
+  display: none;
+}
+
+#file-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+#file-preview.show {
+  display: block;
+}
+
+#submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 6px rgba(26,115,232,0.3);
+  margin-top: 4px;
+}
+
+#submit-btn:active {
+  transform: scale(0.98);
+}
+
+#submit-btn:disabled {
+  background: #9aa0a6;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+#submit-btn:not(:disabled):hover {
+  background: #1557b0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #137333;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  pointer-events: none;
+  max-width: calc(100% - 32px);
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast.error {
+  background: #d93025;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a2e;
+  }
+
+  #app {
+    background: #1a1a2e;
+  }
+
+  .form-group {
+    background: #2d2d44;
+  }
+
+  .form-group label {
+    color: #a8a8b3;
+  }
+
+  .form-group select,
+  .form-group input[type="number"] {
+    color: #e0e0e0;
+    background: transparent;
+  }
+
+  .file-upload-area {
+    background: #252538;
+    border-color: #3d3d5c;
+  }
+
+  .file-upload-area:hover,
+  .file-upload-area:active {
+    border-color: #4a8bf5;
+    background: #2d2d44;
+  }
+
+  .file-upload-content p {
+    color: #4a8bf5;
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23a8a8b3' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  }
+}
