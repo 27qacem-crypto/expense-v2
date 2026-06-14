@@ -1,7 +1,7 @@
-(function () {
+﻿(function () {
   'use strict';
 
-  const APPS_SCRIPT_URL = '___SCRIPT_URL___';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlNfQxB4svOM2_jH0ruktKffVBVUhETzwKTjzcSHEBH3FsxJQwCnwelWd02Td1JgTqXg/exec';
   const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfiuy_hjZHpYYZ6qT2JrTBQt3gJdtM6Zdn1vgRrhUS1Fc1W4g/viewform';
 
   const $ = function (id) { return document.getElementById(id); };
@@ -26,7 +26,7 @@
     { el: employeeSelect, err: 'employee-error', group: employeeSelect.closest('.form-group') },
     { el: expenseTypeSelect, err: 'expense-type-error', group: expenseTypeSelect.closest('.form-group') },
     { el: amountInput, err: 'amount-error', group: amountInput.closest('.form-group') },
-    { el: receiptInput, err: 'receipt-error', group: receiptInput.closest('.form-group') }
+    { el: receiptInput, err: null, group: receiptInput.closest('.form-group') }
   ];
 
   function validate(f) {
@@ -34,7 +34,7 @@
     if (f.el === employeeSelect && !f.el.value) ok = false;
     else if (f.el === expenseTypeSelect && !f.el.value) ok = false;
     else if (f.el === amountInput && (!f.el.value || parseFloat(f.el.value) <= 0)) ok = false;
-    else if (f.el === receiptInput) ok = true;
+    else if (f.el === receiptInput) { return true; }
     f.group.classList.toggle('error', !ok);
     return ok;
   }
