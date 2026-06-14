@@ -1,5 +1,5 @@
 function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[Pending Approvals];
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form_Responses");
   var data;
 
   try {
